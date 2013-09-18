@@ -57,6 +57,13 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.1</version>
 		</dependency>
+		
+		<!-- Jackson -->
+        <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
             
 		
 		<!-- Logging -->

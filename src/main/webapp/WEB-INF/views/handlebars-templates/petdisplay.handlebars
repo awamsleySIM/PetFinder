@@ -1,0 +1,14 @@
+<img src="{{media.photos.photo.0.value}}" /><br/>
+Name: {{name}}<br/>
+Gender: {{formatSex sex}}<br/>
+Age: {{formatAge age}}<br/>
+Size: {{formatSize size}}<br/>
+Breed: {{#each breeds.breed}}{{#if @index}}, {{/if}}{{this}}{{/each}}
+<ul>
+	{{#each options.option}}
+		<li>{{formatPetOption this}}</li>
+	{{/each}}
+</ul>
+<br/><br/>
+
+{{{description}}}

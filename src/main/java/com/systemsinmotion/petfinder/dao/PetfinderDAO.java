@@ -21,7 +21,7 @@ public class PetfinderDAO {
 	private RestTemplate restTemplate;
 	
 	public PetfinderPetRecord findRandomPet() {
-		return this.restTemplate.getForObject(API.GET_RANDOM + "&output=basic", Petfinder.class).getPet();
+		return this.restTemplate.getForObject(API.GET_RANDOM, Petfinder.class).getPet();
 	}
 	
 	public PetfinderPetRecord findRandomPet(Map<String, String> options) {
@@ -33,7 +33,7 @@ public class PetfinderDAO {
 	}
 	
 	public PetfinderBreedList findBreedList(AnimalType animalType) {
-		String url = API.BREED_LIST + "&animal=" + animalType.value();
+		String url = API.BREED_LIST + "&animal=" + animalType.value().toLowerCase();
 		return this.restTemplate.getForObject(url, Petfinder.class).getBreeds();
 	}
 	
