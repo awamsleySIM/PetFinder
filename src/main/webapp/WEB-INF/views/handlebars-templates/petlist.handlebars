@@ -1,0 +1,7 @@
+{{#each pet}}
+	<div class="mini-pet-record">
+		<img src="{{media.photos.photo.1.value}}" /><br/>
+		{{name}}<br/>
+		{{formatSize size}} {{formatAge age}} {{formatSex sex}}
+	</div>
+{{/each}}

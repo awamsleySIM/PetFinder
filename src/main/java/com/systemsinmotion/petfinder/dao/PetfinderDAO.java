@@ -11,7 +11,6 @@ import com.systemsinmotion.petfinder.entities.AnimalType;
 import com.systemsinmotion.petfinder.entities.Petfinder;
 import com.systemsinmotion.petfinder.entities.PetfinderBreedList;
 import com.systemsinmotion.petfinder.entities.PetfinderPetRecord;
-import com.systemsinmotion.petfinder.entities.PetfinderPetRecordList;
 
 
 @Repository("petfinderDAO")
@@ -42,12 +41,13 @@ public class PetfinderDAO {
 		return this.restTemplate.getForObject(url, Petfinder.class).getPet();
 	}
 	
-	public PetfinderPetRecordList findPet(Map<String, String> options) {
+	public Petfinder findPet(Map<String, String> options) {
 		String url = API.FIND;
 		for (String key : options.keySet()) {
 			url += "&" + key + "=" + options.get(key);
 		}
-		return this.restTemplate.getForObject(url, Petfinder.class).getPets();
+		System.out.println(url);
+		return this.restTemplate.getForObject(url, Petfinder.class);
 	}
 	
 	public void setRestTemplate(RestTemplate restTemplate) {

@@ -7,18 +7,18 @@
 </head>
 
 <body>
-	<form id="find-pet" action="/PetFinder/findpet" method="post">
+	<form id="find-pet" action="/PetFinder/findpet" method="get">
 		<label>Species:</label>
-			<select name="animal" id="animal">
+			<select name="animal" id="animal" class="query">
 				<option value="">Any</option>
 				<option value="cat">Cat</option>
 				<option value="dog">Dog</option>
 			</select><br/>
 		<label>Breed:</label>
-			<select name="breed" id="breed" disabled>
+			<select name="breed" id="breed" class="query" disabled>
 			</select><br/>
 		<label>Size:</label>
-			<select name="size" id="size">
+			<select name="size" id="size" class="query">
 				<option value="">Any</option>
 				<option value="S">Small</option>
 				<option value="M">Medium</option>
@@ -26,13 +26,13 @@
 				<option value="XL">Extra large</option>
 			</select><br/>
 		<label>Gender:</label>
-			<select name="sex" id="sex">
+			<select name="sex" id="sex" class="query">
 				<option value="">Any</option>
 				<option value="M">Male</option>
 				<option value="F">Female</option>
 			</select><br/>
 		<label>Age:</label>
-			<select name="age" id="age">
+			<select name="age" id="age" class="query">
 				<option value="">Any</option>
 				<option>Baby</option>
 				<option>Young</option>
@@ -40,7 +40,7 @@
 				<option>Senior</option>
 			</select><br/>
 		<label>Location (ZIP or city and state):</label>
-			<input name="location" id="location" type="text"><br/>
+			<input name="location" id="location" type="text" class="query"><br/>
 		<button id="submit" type="submit">Submit</button>
 	</form>
 </body>

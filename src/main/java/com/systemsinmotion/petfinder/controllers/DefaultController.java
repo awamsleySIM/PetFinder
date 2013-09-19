@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.systemsinmotion.petfinder.entities.AnimalType;
+import com.systemsinmotion.petfinder.entities.Petfinder;
 import com.systemsinmotion.petfinder.entities.PetfinderBreedList;
 import com.systemsinmotion.petfinder.entities.PetfinderPetRecord;
-import com.systemsinmotion.petfinder.entities.PetfinderPetRecordList;
 import com.systemsinmotion.petfinder.services.PetfinderService;
 
 @Controller
@@ -32,7 +32,7 @@ public class DefaultController {
 		return "randompet";
 	}
 	
-	@RequestMapping(value = "randompet", method = RequestMethod.POST)
+	@RequestMapping(value = "randompetoptions", method = RequestMethod.GET)
 	public @ResponseBody PetfinderPetRecord doGetRandomPetWithOptions(@RequestParam Map<String, String> options) {
 		return petfinderService.findRandomPet(options);
 	}
@@ -47,12 +47,17 @@ public class DefaultController {
 		return "findpetmenu";
 	}
 	
-	@RequestMapping(value = "findpet", method = RequestMethod.POST)
-	public @ResponseBody PetfinderPetRecordList doFindPet_POST(@RequestParam Map<String, String> options) {
+	@RequestMapping(value = "findpet", method = RequestMethod.GET)
+	public String doFindPet_POST(@RequestParam Map<String, String> options) {
+		return "findpet";
+	}
+	
+	@RequestMapping(value = "findpetlist", method = RequestMethod.GET)
+	public @ResponseBody Petfinder doFindPetList(@RequestParam Map<String, String> options) {
 		return petfinderService.findPet(options);
 	}
 	
-	@RequestMapping(value = "breedlist", method = RequestMethod.POST)
+	@RequestMapping(value = "breedlist", method = RequestMethod.GET)
 	public @ResponseBody PetfinderBreedList doGetBreedList(@RequestParam(value = "animal") String animal) {
 		return petfinderService.findBreedList(AnimalType.fromValue(animal));
 	}

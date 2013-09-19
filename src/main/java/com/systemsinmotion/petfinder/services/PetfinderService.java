@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.systemsinmotion.petfinder.dao.PetfinderDAO;
 import com.systemsinmotion.petfinder.entities.AnimalType;
+import com.systemsinmotion.petfinder.entities.Petfinder;
 import com.systemsinmotion.petfinder.entities.PetfinderBreedList;
 import com.systemsinmotion.petfinder.entities.PetfinderPetRecord;
-import com.systemsinmotion.petfinder.entities.PetfinderPetRecordList;
 
 @Service("petfinderService")
 public class PetfinderService {
@@ -33,7 +33,7 @@ public class PetfinderService {
 		return petfinderDAO.findPetById(id);
 	}
 
-	public PetfinderPetRecordList findPet(Map<String, String> options) {
+	public Petfinder findPet(Map<String, String> options) {
 		return petfinderDAO.findPet(options);
 	}
 	

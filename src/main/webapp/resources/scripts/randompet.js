@@ -13,9 +13,9 @@ $(document).ready(function() {
 		if ($("#sex").val()) {
 			options.sex = $("#sex").val();
 		}
-		$.ajax({url: "/PetFinder/randompet", data: options, success: function(randomPet) {
+		$.ajax({url: "/PetFinder/randompetoptions", data: options, success: function(randomPet) {
 			$("#pet-display").html(Handlebars.templates.petdisplay(randomPet));
-		}, dataType: "json", type: "POST"});
+		}, dataType: "json", type: "GET"});
 	});
 
 });

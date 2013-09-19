@@ -17,6 +17,9 @@
 			<li>
 				<a href="/PetFinder/random">Find a random pet</a>
 			</li>
+			<li>
+				<a href="/PetFinder/findpetmenu">Find a pet</a>
+			</li>
 		</ul>
 	</div>
 
