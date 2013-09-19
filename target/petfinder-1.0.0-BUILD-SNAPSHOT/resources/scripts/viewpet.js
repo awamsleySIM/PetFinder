@@ -1,3 +1,4 @@
+//Parses URL query string into javascript object for AJAX call
 (function($) {
 var re = /([^&=]+)=?([^&]*)/g;
 var decodeRE = /\+/g;  // Regex for replacing addition symbol with a space
@@ -20,10 +21,9 @@ $(document).ready(function() {
 	
 	var url = window.location.search.substring(1);
 	var parameters = $.parseParams(url);
-	var petfinder;
-	$.getJSON("/PetFinder/findpetlist", parameters, function(data) {
-		petfinder = data;
-		$("#pet-list").html(Handlebars.templates.petlist(data.pets));
+	
+	$.getJSON("/PetFinder/findpetbyid", parameters, function(data) {
+		$("#pet-display").html(Handlebars.templates.petdisplay(data));
 	});
 
 });

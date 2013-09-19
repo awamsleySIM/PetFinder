@@ -5,7 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.systemsinmotion.petfinder.dao.PetfinderDAO;
+import com.systemsinmotion.petfinder.dao.IPetfinderDAO;
 import com.systemsinmotion.petfinder.entities.AnimalType;
 import com.systemsinmotion.petfinder.entities.Petfinder;
 import com.systemsinmotion.petfinder.entities.PetfinderBreedList;
@@ -15,7 +15,7 @@ import com.systemsinmotion.petfinder.entities.PetfinderPetRecord;
 public class PetfinderService {
 
 	@Autowired
-	private PetfinderDAO petfinderDAO;
+	private IPetfinderDAO petfinderDAO;
 
 	public PetfinderPetRecord findRandomPet() {
 		return petfinderDAO.findRandomPet();
@@ -37,6 +37,8 @@ public class PetfinderService {
 		return petfinderDAO.findPet(options);
 	}
 	
-	
+	public void setPetfinderDAO(IPetfinderDAO mockPetfinderDAO) {
+		this.petfinderDAO = mockPetfinderDAO;
+	}
 	
 }

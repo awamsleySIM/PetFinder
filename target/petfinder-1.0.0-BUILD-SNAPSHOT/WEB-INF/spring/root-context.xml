@@ -5,13 +5,17 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="jaxb1Marshaller" class="org.springframework.oxm.jaxb.Jaxb1Marshaller">
+	<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="contextPath" value="com.systemsinmotion.petfinder.entities"/>
     </bean>
     
-    <bean id="application" class="Application">
-        <property name="marshaller" ref="jaxb1Marshaller" />
-        <property name="unmarshaller" ref="jaxb1Marshaller" />
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    	<property name="messageConverters">
+    		<bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+    			<property name="unmarshaller" ref="jaxb2Marshaller" />
+    			<property name="marshaller" ref="jaxb2Marshaller" />
+    		</bean>
+    	</property>
     </bean>
 	
 </beans>

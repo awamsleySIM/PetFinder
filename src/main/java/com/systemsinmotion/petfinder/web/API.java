@@ -1,4 +1,4 @@
-package com.systemsinmotion.petfinder.api;
+package com.systemsinmotion.petfinder.web;
 
 public class API {
 	private static String KEY = "key=36e256001ab1dd0de1be38ee95827f7d";

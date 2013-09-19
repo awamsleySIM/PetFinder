@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+
+
 	//Populates breed list when a species is selected
 	$("#animal").change(function() {
 		if ($(this).val()) {
@@ -11,8 +13,8 @@ $(document).ready(function() {
 					for (var i = 0; i < breedlist.length; i++) {
 						$("#breed").append('<option>' + breedlist[i] + '</option>');
 					}
+					$("#breed").prop('disabled', false);
 				}});
-			$("#breed").prop('disabled', false);
 		} else {
 			$("#breed").html("");
 			$("#breed").prop('disabled', 'disabled');
@@ -30,9 +32,12 @@ $(document).ready(function() {
 		var queryObject = {};
 		$(":input.query").each(function() {
 			if ($(this).val()) {
-				queryObject[$(this).attr("name")] = $(this).val(); 
+				queryObject[$(this).attr("name")] = $(this).val();
+				$(this).val(""); //Resets form
 			}
 		});
+		queryObject["count"] = 25;
+		queryObject["offset"] = 0;
 		var urlQuery = $.param(queryObject);
 		window.location.href = '/PetFinder/findpet?' + urlQuery;
 	});

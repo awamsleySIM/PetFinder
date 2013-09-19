@@ -1,4 +1,4 @@
-package com.systemsinmotion.petfinder.api;
+package com.systemsinmotion.petfinder.web;
 
 public class APIMethod {
 	protected static final String GET_RANDOM = "pet.getRandom?output=full&";

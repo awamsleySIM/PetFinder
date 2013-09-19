@@ -14,6 +14,7 @@ import com.systemsinmotion.petfinder.entities.Petfinder;
 import com.systemsinmotion.petfinder.entities.PetfinderBreedList;
 import com.systemsinmotion.petfinder.entities.PetfinderPetRecord;
 import com.systemsinmotion.petfinder.services.PetfinderService;
+import com.systemsinmotion.petfinder.web.Views;
 
 @Controller
 @RequestMapping("/")
@@ -23,33 +24,33 @@ public class DefaultController {
 	private PetfinderService petfinderService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String doDefault_GET() {
-		return "index";
+	public String doIndex() {
+		return Views.INDEX;
 	}
 	
 	@RequestMapping(value = "random", method = RequestMethod.GET)
-	public String doRandom_GET() {
-		return "randompet";
+	public String doRandomPetView() {
+		return Views.RANDOMPET;
 	}
 	
 	@RequestMapping(value = "randompetoptions", method = RequestMethod.GET)
-	public @ResponseBody PetfinderPetRecord doGetRandomPetWithOptions(@RequestParam Map<String, String> options) {
+	public @ResponseBody PetfinderPetRecord doFindRandomPetWithOptions(@RequestParam Map<String, String> options) {
 		return petfinderService.findRandomPet(options);
 	}
 	
 	@RequestMapping(value = "randompet", method = RequestMethod.GET)
-	public @ResponseBody PetfinderPetRecord doGetRandomPet() {
+	public @ResponseBody PetfinderPetRecord doFindRandomPet() {
 		return petfinderService.findRandomPet();
 	}
 	
 	@RequestMapping(value = "findpetmenu", method = RequestMethod.GET)
-	public String doFindPetMenu_GET() {
-		return "findpetmenu";
+	public String doFindPetMenuView() {
+		return Views.FINDPETMENU;
 	}
 	
 	@RequestMapping(value = "findpet", method = RequestMethod.GET)
-	public String doFindPet_POST(@RequestParam Map<String, String> options) {
-		return "findpet";
+	public String doFindPetView(@RequestParam Map<String, String> options) {
+		return Views.FINDPET;
 	}
 	
 	@RequestMapping(value = "findpetlist", method = RequestMethod.GET)
@@ -60,6 +61,20 @@ public class DefaultController {
 	@RequestMapping(value = "breedlist", method = RequestMethod.GET)
 	public @ResponseBody PetfinderBreedList doGetBreedList(@RequestParam(value = "animal") String animal) {
 		return petfinderService.findBreedList(AnimalType.fromValue(animal));
+	}
+	
+	@RequestMapping(value = "viewpet", method = RequestMethod.GET)
+	public String doViewPetView() {
+		return Views.VIEWPET;
+	}
+	
+	@RequestMapping(value = "findpetbyid", method = RequestMethod.GET)
+	public @ResponseBody PetfinderPetRecord doFindPetById(@RequestParam(value = "id") Integer id) {
+		return petfinderService.findPetById(id);
+	}
+	
+	public void setPetfinderService(PetfinderService mockPetfinderService) {
+		this.petfinderService = mockPetfinderService;
 	}
 	
 }
